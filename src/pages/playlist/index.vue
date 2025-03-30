@@ -82,45 +82,10 @@ onMounted(() => {
 </script>
 <template>
   <div class="flex flex-col h-full flex-1 overflow-hidden bg-background p-4">
-    <div class="py-4">
-      <div class="flex flex-col sm:flex-row gap-4">
-        <div class="relative flex-grow">
-          <icon-mdi:magnify
-            class="lucide lucide-search absolute left-2 top-1/2 transform -translate-y-1/2 text-muted-foreground"
-          />
-          <input
-            disabled
-            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 pl-8"
-            placeholder="搜索歌单..."
-            type="search"
-          />
-        </div>
-        <el-select class="w-48" v-model="selectedTag" @change="getTopPlaylist">
-          <el-option
-            v-for="item in playTags"
-            :key="item.name"
-            :label="item.name"
-            :value="item.name"
-          />
-        </el-select>
-        <el-select
-          class="w-48"
-          v-model="selectedOrder"
-          @change="getTopPlaylist"
-        >
-          <el-option
-            v-for="item in playlistOrder"
-            :key="item.name"
-            :label="item.name"
-            :value="item.name"
-          />
-        </el-select>
-      </div>
-    </div>
     <div class="flex-grow flex flex-col overflow-x-hidden">
       <div class="border-b pb-1">
         <div
-          class="inline-flex h-10 items-center rounded-lg bg-muted/70 p-1 text-muted-foreground w-full justify-start mb-2 overflow-x-auto"
+          class="inline-flex px-2 items-center rounded-lg bg-muted/70 p-1 text-muted-foreground w-full justify-start mb-2 overflow-x-auto"
         >
           <button
             v-for="playlist in playlistsList"
@@ -134,6 +99,32 @@ onMounted(() => {
           >
             {{ playlist.name }}
           </button>
+          <div class="ml-auto space-x-4">
+            <el-select
+              class="w-48"
+              v-model="selectedTag"
+              @change="getTopPlaylist"
+            >
+              <el-option
+                v-for="item in playTags"
+                :key="item.name"
+                :label="item.name"
+                :value="item.name"
+              />
+            </el-select>
+            <el-select
+              class="w-48"
+              v-model="selectedOrder"
+              @change="getTopPlaylist"
+            >
+              <el-option
+                v-for="item in playlistOrder"
+                :key="item.name"
+                :label="item.name"
+                :value="item.name"
+              />
+            </el-select>
+          </div>
         </div>
       </div>
       <div class="flex-1 overflow-x-hidden my-2">

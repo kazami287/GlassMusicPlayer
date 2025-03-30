@@ -27,9 +27,9 @@ watch(
 )
 </script>
 <template>
-  <div class="space-y-8 p-4 mx-auto max-w-7xl">
+  <div class="space-y-8 p-4 max-w-7xl mx-auto">
     <div class="space-y-4">
-      <div class="relative shadow-xl rounded-lg overflow-hidden w-full">
+      <div class="w-full h-full shadow-xl rounded-lg overflow-hidden">
         <Artplayer :src="mvUrls" :poster="mvInfo.cover" />
       </div>
       <div
