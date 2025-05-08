@@ -23,7 +23,6 @@ onMounted(() => {
 // 更改主题
 const changePrimarys = (e: string) => {
   const resultHex = rgbaToHex(e)
-  console.log('🚀 => resultHex:', resultHex)
   changePrimary(resultHex)
 }
 </script>

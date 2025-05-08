@@ -3,7 +3,6 @@ import { API } from '@/api/interface'
 import { PropType } from 'vue'
 import { formatMillisecondsToTime } from '@/utils'
 import { urlV1 } from '@/api'
-import default_album from '@/assets/default_album.jpg'
 const audio = AudioStore()
 const router = useRouter()
 const { loadTrack, play } = useAudioPlayer()
@@ -14,19 +13,6 @@ defineProps({
     default: () => [],
   },
 })
-
-// 转换歌曲实体
-const convertToTrackModel = (song: API.Song) => {
-  return {
-    id: song.id.toString(), // 假设 song.id 是个数字，需要转换成字符串
-    title: song.name,
-    artist: song.ar.map((artist) => artist.name).join(', '), // 假设 artist 是一个对象数组
-    album: song.al.name, // 假设 album 的名称是字符串
-    cover: song.al.picUrl || default_album, // 假设有封面图片的 URL
-    url: '', // 假设有音频地址
-    duration: song.dt, // 毫秒
-  }
-}
 
 // 双击播放
 const handleRowDblclick = async (row: API.Song) => {
@@ -39,6 +25,7 @@ const handleRowDblclick = async (row: API.Song) => {
   play()
 }
 
+// 下载方法
 const downLoadMusic = (row: API.Song) => {
   urlV1(row.id).then(({ data }) => {
     const musicUrl = data[0].url

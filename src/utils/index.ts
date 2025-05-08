@@ -1,4 +1,5 @@
 import { useNavigatorLanguage } from '@vueuse/core'
+import default_album from '@/assets/default_album.jpg'
 
 /**
  * 获取浏览器语言
@@ -90,4 +91,19 @@ export function parseTimestamp(timestamp: string): string {
 
     // 返回格式化后的日期字符串
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+}
+
+
+
+// 转换歌曲实体
+export const convertToTrackModel = (song: any) => {
+    return {
+        id: song.id.toString(),
+        title: song.name,
+        artist: song.ar.map((artist: any) => artist.name).join(', '),
+        album: song.al.name,
+        cover: song.al.picUrl || default_album,
+        url: '',
+        duration: song.dt,
+    }
 }

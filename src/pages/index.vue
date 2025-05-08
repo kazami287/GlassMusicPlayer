@@ -62,21 +62,7 @@ onMounted(async () => {
   })
 })
 
-// 转换歌曲实体
-const convertToTrackModel = (song: any) => {
-  return {
-    id: song.id.toString(),
-    title: song.name,
-    artist: song.ar.map((artist: any) => artist.name).join(', '),
-    album: song.al.name,
-    cover: song.al.picUrl || '',
-    url: '',
-    duration: song.dt,
-  }
-}
-
 const handlePlaylclick = async (row: any) => {
-  console.log('🚀 => row:', row)
   // 转换歌曲实体
   const track = convertToTrackModel(row)
   // 添加到播放列表
