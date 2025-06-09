@@ -59,7 +59,7 @@ watch(
     </el-button>
     <!-- 开源地址 -->
     <a
-      href="https://github.com/XiangZi7"
+      href="https://github.com/kazami287"
       target="_blank"
       class="ml-4 bg-hoverMenuBg text-sm flex items-center gap-2 p-2 rounded-lg"
     >
